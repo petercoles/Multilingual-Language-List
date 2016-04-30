@@ -7,9 +7,11 @@
 
 ## Introduction
 
-Over the years, many of the projects I've worked on have resulted in multilingual sites. Over the years the number of languages supported has has increased and there's more sensitivty to dialectical differences, which are good things. The purpose of this package is to make managing language lists easiers by exposuring access to an industry-maintained list via a simple API.
+Over the years, many of the projects I've worked on have resulted in multilingual sites. During that time the number of languages typically supported has increased and the sensitivty to the importance of dialectical differences has improved, which are good things.
 
-Initially data can be returned as a lookup array or an array of key-value pairs, where both the key and value labels can be set according to the needs of the software consuming them.
+The purpose of this package is to make managing language lists, such as those used in language pulldowns or form select fields easier to generate via a simple API that gives access to an industry-maintained list.
+
+Data can be returned as a lookup array or an array of key-value pairs, where both the key and value labels can be set according to the needs of the software consuming them.
 
 ## Installation
 
@@ -47,6 +49,79 @@ The ```lookup``` method takes three optional parameters and returns a collection
 * $flip to switch the key and value for the response array so that the language name becomes the key and the language code becomes the value.
 
 The resulting collection will be cast to a json object by Laravel if returned as a response, or can be cast to an array if needed with the toArray() method.
+
+#### Example: Default Settigs
+
+```
+Languages::lookup();
+
+// returns
+
+{
+  "ab": "Abkhazian",
+  ...
+  "zu": "Zulu"
+}
+
+```
+
+#### Example: Limiting the languages displayed
+
+```
+Languages::lookup(['en', 'fr', 'de']);
+
+// returns
+
+{
+  "en": "English",
+  "fr": "French",
+  "de": "German"
+}
+```
+
+#### Example: Changing the display language
+
+```
+Languages::lookup(['en', 'fr', 'de'], 'fr');
+
+// returns
+
+{
+  "de": "allemand",
+  "en": "anglais",
+  "fr": "français"
+}
+```
+
+#### Example: Reverse lookups
+
+```
+Languages::lookup(['en', 'fr', 'de'], 'fr', true);
+
+// returns
+
+{
+  "allemand": "de",
+  "anglais": "en",
+  "français": "fr"
+}
+
+```
+
+#### Example: Non-latin character sets are supported too
+```
+Languages::lookup(['en', 'fr', 'de', 'bs'], 'bs_Cyrl');
+
+// returns
+
+{
+  "bs": "босански",
+  "en": "енглески",
+  "de": "немачки",
+  "fr": "француски"
+}
+
+```
 
 ### keyValue
 
