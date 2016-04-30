@@ -41,10 +41,10 @@ class Maker
 
     protected function getMixedData($filter)
     {
-        $languages = [];
+        $languages = [ ];
         foreach ($filter as $locale) {
             $language = require realpath(__DIR__."/../data/$locale.php");
-            $languages[$locale] = $language[$locale];
+            $languages[ $locale ] = $language[ $locale ];
         }
 
         $this->languages = collect($languages);             
@@ -61,11 +61,11 @@ class Maker
     {
         if (is_array($filter)) {
             $class = '\\PeterColes\\Languages\\Filters\\Custom';
-            $this->languages = call_user_func([new $class, 'filter'], $this->languages, $filter);
+            $this->languages = call_user_func([ new $class, 'filter' ], $this->languages, $filter);
         } else {
             $filter = $filter ?: 'major';
             $class = '\\PeterColes\\Languages\\Filters\\'.ucfirst($filter);
-            $this->languages = call_user_func([new $class, 'filter'], $this->languages);
+            $this->languages = call_user_func([ new $class, 'filter' ], $this->languages);
         }
     }
 }
