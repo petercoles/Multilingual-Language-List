@@ -31,9 +31,23 @@ class Maker
 
     protected function prep($filter, $locale)
     {
-        $this->getData($locale);
+        if ($locale == 'mixed') {
+            $this->getMixedData($filter);
+        } else {
+            $this->getData($locale);
+            $this->filter($filter);
+        }
+    }
 
-        $this->filter($filter);
+    protected function getMixedData($filter)
+    {
+        $languages = [];
+        foreach ($filter as $locale) {
+            $language = require realpath(__DIR__."/../data/$locale.php");
+            $languages[$locale] = $language[$locale];
+        }
+
+        $this->languages = collect($languages);             
     }
 
     protected function getData($locale)

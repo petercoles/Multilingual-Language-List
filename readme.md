@@ -177,6 +177,46 @@ Languages::keyValue(['en', 'ja', 'zh'], 'zh', 'label', 'text');
 ]
 ```
 
+### Mixed Locales
+
+Sometimes you might want to display a list of languages where each language is expressed in its own language and writing system e.g. one list with French as français, Japanese as 日本語 and Russian as русский. If so, we've got you covered.
+
+By using the special "mixed" locale as the second paramter and a custom array as the first, the languages in that custom array will each be rendered in their own localised form.
+
+#### Example: lookup
+```
+Languages::lookup(['en', 'fr', 'de', 'ja', 'ru', 'zh'], 'mixed');
+
+// returns
+
+{
+  "en": "English",
+  "fr": "français",
+  "de": "Deutsch",
+  "ja": "日本語",
+  "ru": "русский",
+  "zh": "中文",
+}
+
+```
+
+#### Example: key-value
+```
+Languages::keyValue(['en', 'fr', 'de', 'ja', 'ru', 'zh'], 'mixed');
+
+// returns
+
+[
+  {"key" => "en", "value" => "English"},
+  {"key" => "fr", "value" => "français"},
+  {"key" => "de", "value" => "Deutsch"},
+  {"key" => "ja", "value" => "日本語"},
+  {"key" => "ru", "value" => "русский"},
+  {"key" => "zh", "value" => "中文"}
+]
+
+As seen above, the mixed locale parameter can be used for generating lookups or key-value objects. The $flip, $key and $value parameters continue to work for the relevant list type as demonstrated in the earlier sections.
+
 ## Issues
 
 This package was developed to meet a specific need and then generalised for wider use. If you have a use case not currently met, or see something that appears to not be working correctly, please raise an issue at the [github repo](https://github.com/petercoles/countries/issues)
