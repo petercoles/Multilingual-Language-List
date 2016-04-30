@@ -50,7 +50,7 @@ The ```lookup``` method takes three optional parameters and returns a collection
 
 The resulting collection will be cast to a json object by Laravel if returned as a response, or can be cast to an array if needed with the toArray() method.
 
-#### Example: Default Settigs
+#### Example: Default settigs
 
 ```
 Languages::lookup();
@@ -130,6 +130,52 @@ The ```keyValue``` method takes four optional parameters:
 * $locale - default "en". See lookup section for full explanation
 * $key - default "key"
 * $value - default "value"
+
+#### Example: Default settings
+```
+Languages::keyValue();
+
+// returns
+
+[
+  {"key": "ab", "value": "Abkhazian"},
+  {"key": "aa", "value": "Afar"},
+  ...
+  {"key": "za", "value": "Zhuang"},
+  {"key": "zu", "value": "Zulu"}
+]
+```
+#### Example: Include "minor" languages
+
+```
+Languages::keyValue('minor');
+
+// returns
+
+[
+  {"key": "ab", "value": "Abkhazian"},
+  {"key": "ace", "value": "Achinese"},
+  {"key": "ach", "value": "Acoli"},
+  ...
+  {"key": "gbz", "value": "Zoroastrian Dari"},
+  {"key": "zu", "value": "Zulu"},
+  {"key": "zun", "value": "Zuni"}
+]
+```
+
+#### Example: The kitchen sink - custom list, in non-Latin language with custom indices
+
+```
+Languages::keyValue(['en', 'ja', 'zh'], 'zh', 'label', 'text');
+
+// returns
+
+[
+  {"label": "ja", "text": "日文"},
+  {"label": "en", "text": "英文"},
+  {"label": "zh", "text": "中文"}
+]
+```
 
 ## Issues
 
