@@ -38,14 +38,19 @@ class Maker
 
     protected function getData($locale)
     {
-        if (!$this->languages) {
-            $locale = $locale ?: 'en';
-            $this->languages = collect(require realpath(__DIR__."/../data/$locale.php"));             
-        }
+        $locale = $locale ?: 'en';
+
+        $this->languages = collect(require realpath(__DIR__."/../data/$locale.php"));             
     }
 
     protected function filter($filter)
     {
+        if (is_array($filter)) {
+            $this->languages = $this->languages->filter(function($value, $key) use($filter) {
+                return in_array($key, $filter);
+            });
+        }
+
         if (!$filter || $filter == 'major') {
             $this->languages = $this->languages->filter(function($value, $key) {
                 return strlen($key) == 2;

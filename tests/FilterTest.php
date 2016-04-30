@@ -52,4 +52,17 @@ class FilterTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('ar_001', $lookup);
         $this->assertArrayHasKey('zh_Hant', $lookup);
     }
+
+    public function testArrayFilter()
+    {
+        $lookup = $this->maker->lookup(['en', 'fr']);
+
+
+        $this->assertArrayHasKey('en', $lookup);
+        $this->assertArrayHasKey('fr', $lookup);
+        $this->assertArrayNotHasKey('de', $lookup);
+        $this->assertArrayNotHasKey('en_US', $lookup);
+        $this->assertArrayNotHasKey('ar_001', $lookup);
+        $this->assertArrayNotHasKey('zh_Hant', $lookup);
+    }
 }
