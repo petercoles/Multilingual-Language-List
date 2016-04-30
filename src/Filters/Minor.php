@@ -2,9 +2,11 @@
 
 namespace PeterColes\Languages\Filters;
 
+use Illuminate\Support\Collection;
+
 class Minor
 {
-    public function filter($languages)
+    public function filter(Collection $languages)
     {
         return $languages->filter(function($value, $key) {
             return strlen($key) <= 3;
