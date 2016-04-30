@@ -46,21 +46,12 @@ class Maker
     protected function filter($filter)
     {
         if (is_array($filter)) {
-            $this->languages = $this->languages->filter(function($value, $key) use($filter) {
-                return in_array($key, $filter);
-            });
-        }
-
-        if (!$filter || $filter == 'major') {
-            $this->languages = $this->languages->filter(function($value, $key) {
-                return strlen($key) == 2;
-            });
-        }
-
-        if ($filter == 'minor') {
-            $this->languages = $this->languages->filter(function($value, $key) {
-                return strlen($key) <= 3;
-            });
+            $class = '\\PeterColes\\Languages\\Filters\\Custom';
+            $this->languages = call_user_func([new $class, 'filter'], $this->languages, $filter);
+        } else {
+            $filter = $filter ?: 'major';
+            $class = '\\PeterColes\\Languages\\Filters\\'.ucfirst($filter);
+            $this->languages = call_user_func([new $class, 'filter'], $this->languages);
         }
     }
 }
