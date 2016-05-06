@@ -26,7 +26,7 @@ then add the service provider to the providers entry in your config/app.php file
 ```
     'providers' => [
         // ...
-        PeterColes\LiveOrLetDie\Providers\LanguagesServiceProvider::class,
+        PeterColes\Languages\LanguagesServiceProvider::class,
         // ...
     ],
 ```
