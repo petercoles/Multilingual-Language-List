@@ -1,5 +1,6 @@
 # Multilingual Language Lists for Laravel
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/c1edba78-da39-4465-b53b-362e8f0f8f6b/mini.png)](https://insight.sensiolabs.com/projects/c1edba78-da39-4465-b53b-362e8f0f8f6b)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/petercoles/Multilingual-Language-List/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/petercoles/Multilingual-Language-List/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/petercoles/Multilingual-Language-List/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/petercoles/Multilingual-Language-List/?branch=master)
 [![Build Status](https://travis-ci.org/petercoles/Multilingual-Language-List.svg?branch=master)](https://travis-ci.org/petercoles/Multilingual-Language-List)
