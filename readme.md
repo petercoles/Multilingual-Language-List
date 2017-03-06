@@ -182,7 +182,7 @@ Languages::keyValue(['en', 'ja', 'zh'], 'zh', 'label', 'text');
 
 Sometimes you might want to display a list of languages where each language is expressed in its own language and writing system e.g. one list with French as français, Japanese as 日本語 and Russian as русский. If so, we've got you covered.
 
-By using the special "mixed" locale as the second paramter and a custom array as the first, the languages in that custom array will each be rendered in their own localised form, in the order given in the first parameter.
+By using the special "mixed" locale as the second parameter and a custom array as the first, the languages in that custom array will each be rendered in their own localised form, in the order given in the first parameter.
 
 #### Example: lookup
 ```
