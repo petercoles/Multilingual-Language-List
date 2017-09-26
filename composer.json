@@ -27,5 +27,15 @@
     "psr-4": {
       "PeterColes\\Languages\\": "src/"
     }
-  }
+  },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PeterColes\\Languages\\LanguagesServiceProvider"
+            ],
+            "aliases": {
+                "Languages": "PeterColes\\Languages\\CountriesFacade"
+            }
+        }
+    }
 }

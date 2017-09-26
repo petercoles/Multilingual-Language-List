@@ -22,7 +22,9 @@ At the command line run
 composer require petercoles/multilingual-language-list
 ```
 
-then add the service provider to the providers entry in your config/app.php file
+If you're using Laravel 5.5 (and haven't disabled package discovery), you're done. Move on to the usage section below.
+
+If you're using an older version of Laravel, then add the service provider to the providers entry in your config/app.php file
 
 ```
     'providers' => [
@@ -221,7 +223,7 @@ As seen above, the mixed locale parameter can be used for generating lookups or 
 
 ## Issues
 
-This package was developed to meet a specific need and then generalised for wider use. If you have a use case not currently met, or see something that appears to not be working correctly, please raise an issue at the [github repo](https://github.com/petercoles/countries/issues)
+This package was developed to meet a specific need and then generalised for wider use. If you have a use case not currently met, or see something that appears to not be working correctly, please raise an issue at the [github repo](https://github.com/petercoles/countries/issues).
 
 ## License
 
