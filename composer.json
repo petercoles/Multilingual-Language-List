@@ -34,7 +34,7 @@
                 "PeterColes\\Languages\\LanguagesServiceProvider"
             ],
             "aliases": {
-                "Languages": "PeterColes\\Languages\\CountriesFacade"
+                "Languages": "PeterColes\\Languages\\LanguagesFacade"
             }
         }
     }
