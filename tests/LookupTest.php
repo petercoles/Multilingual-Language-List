@@ -3,7 +3,7 @@
 class LookupTest extends \PHPUnit_Framework_TestCase
 {
     protected $maker;
-        
+
     public function setUp()
     {
         $this->maker = new PeterColes\Languages\Maker;
@@ -20,7 +20,7 @@ class LookupTest extends \PHPUnit_Framework_TestCase
     {
         $lookup = $this->maker->lookup(null, 'zh');
 
-        $this->assertEquals('荷兰文', $lookup['nl']);
+        $this->assertEquals('荷兰语', $lookup['nl']);
     }
 
     public function testReverseSetting()
