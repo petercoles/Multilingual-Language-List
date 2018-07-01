@@ -18,7 +18,7 @@ Data can be returned as a lookup array or an array of key-value pairs, where bot
 
 At the command line run
 
-```
+```shell
 composer require petercoles/multilingual-language-list
 ```
 
@@ -26,7 +26,7 @@ If you're using Laravel 5.5 or later (and haven't disabled package discovery), y
 
 If you're using an older version of Laravel, then add the service provider to the providers entry in your config/app.php file
 
-```
+```php
     'providers' => [
         // ...
         PeterColes\Languages\LanguagesServiceProvider::class,
@@ -36,7 +36,7 @@ If you're using an older version of Laravel, then add the service provider to th
 
 An optional facade is also available and can be enabled by adding the following to you config/app.php's aliases array
 
-```
+```php
 'Languages' => PeterColes\Languages\LanguagesFacade::class,
 ```
 
@@ -55,7 +55,7 @@ The resulting collection will be cast to a json object by Laravel if returned as
 
 #### Example: Default settigs
 
-```
+```php
 Languages::lookup();
 
 // returns
@@ -70,7 +70,7 @@ Languages::lookup();
 
 #### Example: Limiting the languages displayed
 
-```
+```php
 Languages::lookup(['en', 'fr', 'de']);
 
 // returns
@@ -84,7 +84,7 @@ Languages::lookup(['en', 'fr', 'de']);
 
 #### Example: Changing the display language
 
-```
+```php
 Languages::lookup(['en', 'fr', 'de'], 'fr');
 
 // returns
@@ -98,7 +98,7 @@ Languages::lookup(['en', 'fr', 'de'], 'fr');
 
 #### Example: Reverse lookups
 
-```
+```php
 Languages::lookup(['en', 'fr', 'de'], 'fr', true);
 
 // returns
@@ -112,7 +112,8 @@ Languages::lookup(['en', 'fr', 'de'], 'fr', true);
 ```
 
 #### Example: Non-latin character sets are supported too
-```
+
+```php
 Languages::lookup(['en', 'fr', 'de', 'bs'], 'bs_Cyrl');
 
 // returns
@@ -135,7 +136,8 @@ The ```keyValue``` method takes four optional parameters:
 * $value - default "value"
 
 #### Example: Default settings
-```
+
+```php
 Languages::keyValue();
 
 // returns
@@ -148,9 +150,10 @@ Languages::keyValue();
   {"key": "zu", "value": "Zulu"}
 ]
 ```
+
 #### Example: Include "minor" languages
 
-```
+```php
 Languages::keyValue('minor');
 
 // returns
@@ -168,7 +171,7 @@ Languages::keyValue('minor');
 
 #### Example: The kitchen sink - custom list, in non-Latin language with custom indices
 
-```
+```php
 Languages::keyValue(['en', 'ja', 'zh'], 'zh', 'label', 'text');
 
 // returns
@@ -187,7 +190,8 @@ Sometimes you might want to display a list of languages where each language is e
 By using the special "mixed" locale as the second parameter and a custom array as the first, the languages in that custom array will each be rendered in their own localised form, in the order given in the first parameter.
 
 #### Example: lookup
-```
+
+```php
 Languages::lookup(['en', 'fr', 'de', 'ja', 'ru', 'zh'], 'mixed');
 
 // returns
@@ -204,7 +208,8 @@ Languages::lookup(['en', 'fr', 'de', 'ja', 'ru', 'zh'], 'mixed');
 ```
 
 #### Example: key-value
-```
+
+```php
 Languages::keyValue(['en', 'fr', 'de', 'ja', 'ru', 'zh'], 'mixed');
 
 // returns
