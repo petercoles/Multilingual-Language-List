@@ -8,7 +8,7 @@
 
 ## Introduction
 
-Over the years, many of the projects I've worked on have resulted in multilingual sites. During that time the number of languages typically supported has increased and the sensitivty to the importance of dialectical differences has improved, which are good things.
+Over the years, many of the projects I've worked on have resulted in multilingual sites. During that time the number of languages typically supported has increased and the sensitivity to the importance of dialectical differences has improved, which are good things.
 
 The purpose of this package is to make managing language lists, such as those used in language pulldowns or form select fields easier to generate via a simple API that gives access to an industry-maintained list.
 
