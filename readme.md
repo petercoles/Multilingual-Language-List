@@ -226,9 +226,58 @@ Languages::keyValue(['en', 'fr', 'de', 'ja', 'ru', 'zh'], 'mixed');
 
 As seen above, the mixed locale parameter can be used for generating lookups or key-value objects. The $flip, $key and $value parameters continue to work for the relevant list type in the same way as shown in the earlier sections.
 
+#### Example: Find all possible mixed language candidates
+
+Each locale file contains (currently) almost 600 language names expressed in that locale. However, the presence of a language in each locale file does not mean that the inverse is true, i.e. many of the languages do not have a locale file, though some have many locale files. That probably needs an example.
+
+In addition to basic English locale file en.php, there are locale files for many variants of English (over 100 in fact). Each of those contains the English names for almost 600 languages, with slight variations where they have different names in different parts of the world. The first language in each of these locales is Abkhazian. However there is no locale file for Abkhazian so we don't know what "English" is in Abkhazian, or even how the Abkhazian language refers to itself, so it's not possible to include it in a list of mixed languages.
+
+The list of languages that can be used will change over time, and could change each time the data is updated. Here's how you can generate a list of the currently feasible candidates.
+
+Firstly obtain an array of the major languages (there is no locale data available for "minor" languages)
+
+```php
+$languageKeys = Languages::lookup('major')->keys()->toArray();
+
+// returns
+['ab', ... 'zu']
+```
+
+Then lookup these languages using the "parameter" which will filter out languages for which there is no locale file.
+
+```php
+$mixedLanguages = Languages::lookup($languageKeys, 'mixed');
+
+// returns
+
+{
+  "af": "Afrikaans",
+  "ak": "Akan",
+  "sq": "shqip",
+  "am": "አማርኛ",
+  "ar": "العربية",
+  "hy": "հայերեն",
+  "as": "অসমীয়া",
+  ...
+  "zu": "isiZulu"
+}
+```
+
+A word of caution however, generating this requires a lot of filesystem reads, so I recommend that you not call this every time you want to use the list and instead use Laravel's outstanding Caching system to persist the results for use in your live system.
+
+If you don't personally read all 184 (current) candidate languages and want a list that you can understand (e.g. to remove obscure or irrelevant ones), simply feed the keys for the list back into the lookup method and specify the language of your choice:
+
+```php
+Languages::lookup($mixedLanguages->keys()->toArray(), 'fr');
+```
+
 ## Issues
 
 This package was developed to meet a specific need and then generalised for wider use. If you have a use case not currently met, or see something that appears to not be working correctly, please raise an issue at the [github repo](https://github.com/petercoles/countries/issues).
+
+## Contributions
+
+Contributions are welcome, but will generally need tests. I recommend raising an issue first so that proposed changes or enhancements can be discussed before development starts.
 
 ## License
 

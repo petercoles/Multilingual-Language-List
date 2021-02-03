@@ -43,8 +43,11 @@ class Maker
     {
         $languages = [ ];
         foreach ($filter as $locale) {
-            $language = require realpath(__DIR__."/../data/$locale.php");
-            $languages[ $locale ] = $language[ $locale ];
+            $filePath = realpath(__DIR__."/../data/$locale.php");
+            if (file_exists($filePath)) {
+                $language = require $filePath;
+                $languages[ $locale ] = $language[ $locale ];
+            }
         }
 
         $this->languages = collect($languages);             

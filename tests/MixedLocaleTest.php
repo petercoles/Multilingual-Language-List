@@ -42,4 +42,13 @@ class MixedLocaleTest extends TestCase
 
         $this->assertEquals($expected, $keyValue->toArray());
     }
+
+    public function testML()
+    {
+        $languageKeys = $this->maker->lookup('major')->keys()->toArray();
+        $mixed = $this->maker->lookup($languageKeys, 'mixed');
+
+        $this->assertArrayHasKey("af", $mixed);
+        $this->assertArrayHasKey("zu", $mixed);
+    }
 }
